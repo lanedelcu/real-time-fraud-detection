@@ -38,8 +38,8 @@ Ensure the following are installed:
 
 
 4. **Dataset**:
-   - Download the flight delay dataset (e.g., from [Kaggle](https://www.kaggle.com/datasets/usdot/flight-delays)).
-   - Save the dataset as a CSV file (e.g., `flight_data.csv`).
+   - Download the flight delay dataset ([Bank Transactions Dataset](https://www.kaggle.com/datasets/ealaxi/paysim1)).
+   - Save the dataset as a CSV file (e.g., `transactions_data.csv`).
 
  ## Create the Java class with the variable dependencies: ##
  1. Set Up Your Java Project in IntelliJ

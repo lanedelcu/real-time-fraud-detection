@@ -86,3 +86,11 @@ export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin``` </pre>
     - c. package the project into a JAR file by running in the terminal `mvn clean package`
       - * this command generate a JAR file from the compiled class in newly created  /target folder in our bank-transaction-analysis directory
       - * check your work by going to the root directory, and check for the jar file that should be called bank-transactions-analysis-1.0-SNAPSHOT.jar
+       
+## Split the Data into Chunks
+We simulate real-time data streaming by breaking a large CSV file(transactions_data.csv) into smaller pieces (chunks). Each chunk will represent a batch of records sent at regular intervals to the Spark Streaming application. This mimics how data might arrive in a real-world scenario.  
+Split the dataset as follow:  
+* navigate to ypur dataset directory using `cd path/to/your/saved/directory` , mine is
+   cd /Users/anedelcu/Lavinia_Nedelcu/School/datasets-for-project/Stream-processing
+  split the dataset(transactions_)
+

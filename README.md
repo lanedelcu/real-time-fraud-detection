@@ -8,7 +8,7 @@ The Spark job:
 
 1. Connects to a local socket stream at `localhost:9999`.
 2. Reads each transaction line as a string.
-3. Applies custom logic to determine whether it is **fraudulent** (via the `FraudDetector` class).
+3. Applies custom logic to determine whether it is **fraudulent** (via the `FraudDetectionStream` class).
 4. Logs suspicious transactions to the console.
 
 ---
@@ -54,20 +54,23 @@ export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin``` </pre>
  3. Configure the variable Dependencies (pom.xml)
 - Because we choose Maven, a file called pom.xml was created by default.
 - Go in pom.xml and all the way at the bottom, after the </property> add the following dependencies:
-<pre>```<dependencies>
-<!-- Apache Spark Core -->
+`
+  <dependencies>
+  <!-- Apache Spark Core -->
   <dependency>
-    <groupId>org.apache.spark</groupId>
-    <artifactId>spark-core_2.12</artifactId>
-    <version>3.5.5</version>
+  <groupId>org.apache.spark</groupId>
+  <artifactId>spark-core_2.12</artifactId>
+  <version>3.5.5</version>
   </dependency>
-<!-- Apache Spark SQL -->
+  
+  <!-- Apache Spark SQL -->
   <dependency>
     <groupId>org.apache.spark</groupId>
     <artifactId>spark-sql_2.12</artifactId>
     <version>3.5.5</version>
   </dependency>
-  </dependencies>```<pre>
+</dependencies>`
+<pre> ```xml <dependencies> <!-- Apache Spark Core --> <dependency> <groupId>org.apache.spark</groupId> <artifactId>spark-core_2.12</artifactId> <version>3.5.5</version> </dependency> <!-- Apache Spark SQL --> <dependency> <groupId>org.apache.spark</groupId> <artifactId>spark-sql_2.12</artifactId> <version>3.5.5</version> </dependency> </dependencies> ``` </pre>
 
  4. Build and Run the Project
         a.open the terminal --> navigate to the root directory of your project that contains the pom.xml file.

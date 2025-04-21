@@ -92,5 +92,7 @@ We simulate real-time data streaming by breaking a large CSV file(transactions_d
 Split the dataset as follow:  
 * navigate to ypur dataset directory using `cd path/to/your/saved/directory` , mine is
    cd /Users/anedelcu/Lavinia_Nedelcu/School/datasets-for-project/Stream-processing
-  split the dataset(transactions_)
+* split the dataset(transactions_data.csv) into chunks of 1,000 rows each by typing in the terminal:
+ `split -l 1000 transactions.csv chunk_
+`
 

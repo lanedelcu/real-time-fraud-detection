@@ -94,5 +94,37 @@ Split the dataset as follow:
    cd /Users/anedelcu/Lavinia_Nedelcu/School/datasets-for-project/Stream-processing
 * split the dataset(transactions_data.csv) into chunks of 1,000 rows each by typing in the terminal:
  `split -l 1000 transactions.csv chunk_
+
+## Create a Shell Script to feed the chunks via Netcat
+We'll simulate a data stream by sending one chunk at a time over a local socket using Netcat.  
+a.  Open the terminal and type `nano send_chunks.sh`  
+b.  In the send_chunk.sh copy and paste the code. This will send a chunk every 5 seconds to localhost:9999 <pre>
+#!/bin/bash
+
+PORT=9999  # Port you're using with socketTextStream
+HOST=localhost
+CHUNKS_DIR="/Users/anedelcu/Lavinia_Nedelcu/School/datasets-for-project/Stream-processing"
+//Loop through each .txt chunk file and feed them to the socket
+for chunk in "$CHUNKS_DIR"/chunk_*; do
+    echo "📤 Sending: $chunk"
+    if [ -f "$chunk" ]; then  # Check if it's a file before trying to send
+        nc $HOST $PORT < "$chunk"
+        echo "✅ Sent: $chunk"
+        sleep 5  # Wait before sending the next one
+    else
+        echo "❌ No matching files found for $chunk"
+    fi
+done
+</pre>  
+c. Male the script executable: back in the open terminal type `chmod +x send_chunks.sh` to give your operating system permisiion to run this file as a program  
+
+## FUTURE WORK  
+Now that your Java project is built and your dataset is split into chunks, the next steps will bring the pipeline together so you can simulate real-time fraud detection.  
+1. Open a Terminal for Netcat to Listen
+2. Run the Spark Streaming job <pre>spark-submit \
+  --class neiu.edu.FraudDetectionStream \
+  --master "local[*]" \
+  /Users/anedelcu/apache-spark/java-work/bank-transactions-analysis/target/bank-transactions-analysis-1.0-SNAPSHOT.jar </pre>  
+3. Send Chunks of Data to simulate real-time data processing
 `
 

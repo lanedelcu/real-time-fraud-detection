@@ -63,7 +63,8 @@ export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin``` </pre>
  2. Configure the variable Dependencies (pom.xml)
 - Because we choose Maven, a file called pom.xml was created by default.
 - Go in pom.xml and all the way at the bottom, after the </property> add the following dependencies:
-`<dependencies>
+```
+ <dependencies>
  <!-- Apache Spark Core -->
   <dependency>
   <groupId>org.apache.spark</groupId>
@@ -77,7 +78,8 @@ export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin``` </pre>
     <artifactId>spark-sql_2.12</artifactId>
     <version>3.5.5</version>
   </dependency>
-</dependencies> `  
+</dependencies>   
+```
 
  3. Build and Run the Project
     - a. open the terminal --> navigate to the root directory of your project that contains the pom.xml file.
@@ -116,7 +118,7 @@ for chunk in "$CHUNKS_DIR"/chunk_*; do
     fi
 done
 </pre>  
-c. Male the script executable: back in the open terminal type `chmod +x send_chunks.sh` to give your operating system permisiion to run this file as a program  
+c. Make the script executable: back in the open terminal type `chmod +x send_chunks.sh` to give your operating system permisiion to run this file as a program  
 
 ## FUTURE WORK  
 Now that your Java project is built and your dataset is split into chunks, the next steps will bring the pipeline together so you can simulate real-time fraud detection.  
